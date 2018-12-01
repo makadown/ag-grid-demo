@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ProductService } from 'src/app/services/product.service';
+import { Router } from '@angular/router';
 // import 'ag-grid-enterprise';
 import { Subscription } from 'rxjs';
 
@@ -53,22 +54,29 @@ export class HomeComponent implements OnInit, OnDestroy {
     // Add 'implements OnInit' to the class.
   }
   ngOnDestroy(): void {
-
+    this.subscription.unsubscribe();
   }
 
   constructor(private http: HttpClient,
-              private _productService: ProductService) {
+              private _productService: ProductService,
+              private router: Router) {
     this.rowSelection = 'single';
   }
 
   onSelectionChanged() {
     const selectedRows = this.gridApi.getSelectedRows();
-    console.log(selectedRows);
+  //  console.log(selectedRows);
     const selectedRowsString = JSON.stringify(selectedRows[0]);
     document.querySelector('#selectedRows').innerHTML = selectedRowsString;
+    // this.router.navigate(['/product/' + (selectedRows[0]['_id'])] );
+    this.router.navigate(['/product/' + (selectedRows[0]['codigo'])] );
   }
 
   onPageSizeChanged(newPageSize) {
+    this.changePageSize();
+  }
+
+  changePageSize() {
     const value = (<HTMLSelectElement>document.getElementById('page-size')).value;
     this.gridApi.paginationSetPageSize(Number(value));
   }
@@ -79,15 +87,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.subscription = this._productService.getProducts().subscribe(data => {
             this.rowData = data;
+            this.changePageSize();
         } );
-    /*
-    this.http
-      .get(
-        'https://raw.githubusercontent.com/ag-grid/ag-grid/master/packages/ag-grid-docs/src/olympicWinnersSmall.json'
-      )
-      .subscribe(data => {
-        this.rowData = data;
-      });*/
   }
 
 }

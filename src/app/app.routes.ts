@@ -6,11 +6,12 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { SuccessComponent } from './pages/success/success.component';
 import { AdminordersComponent } from './pages/admin/adminorders/adminorders.component';
 import { AdminproductsComponent } from './pages/admin/adminproducts/adminproducts.component';
+import { ProductComponent } from './pages/products/product.component';
 
 const APP_ROUTES: Routes = [
     { path: '', component: HomeComponent },
     { path: 'home', component: HomeComponent },
-    { path: 'products', component: HomeComponent },
+    { path: 'product/:id', component: ProductComponent },
     { path: 'cart', component: CartComponent },
     { path: 'checkout', component: CheckoutComponent },
     { path: 'success', component: SuccessComponent },

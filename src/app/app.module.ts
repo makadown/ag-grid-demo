@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ProductsComponent } from './pages/products/products.component';
+import { ProductComponent } from './pages/products/product.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { SuccessComponent } from './pages/success/success.component';
@@ -18,14 +18,14 @@ import { AdminproductsComponent } from './pages/admin/adminproducts/adminproduct
 
 import { APP_RUTAS } from './app.routes';
 // ag-grid
-import { AgGridModule } from "ag-grid-angular";
+import { AgGridModule } from 'ag-grid-angular';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ProductsComponent,
+    ProductComponent,
     CartComponent,
     CheckoutComponent,
     SuccessComponent,
