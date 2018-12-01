@@ -15,7 +15,11 @@ ng update @angular/cli @angular/core
 ```
 Instalando Bootstrap:
 ```
-npm install bootstrap font-awesome jquery popper.js --save
+npm install bootstrap jquery popper.js --save
+```
+font-awesome
+```
+npm install --save-dev @fortawesome/fontawesome-free
 ```
 el archivo angular.json debería tener las siguientes ediciones:
 ```

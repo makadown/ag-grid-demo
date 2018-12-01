@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class NavbarComponent implements OnInit {
+  // faShoppingBag = faShoppingBag;
 
-  constructor() { }
+  constructor( private http: HttpClient, private router: Router) {
+
+  }
 
   ngOnInit() {
   }
 
+  logout() {
+
+  }
+
+  login() {
+    this.router.navigate(['/login']);
+  }
 }
