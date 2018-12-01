@@ -17,6 +17,8 @@ import { AdminordersComponent } from './pages/admin/adminorders/adminorders.comp
 import { AdminproductsComponent } from './pages/admin/adminproducts/adminproducts.component';
 
 import { APP_RUTAS } from './app.routes';
+// ag-grid
+import { AgGridModule } from "ag-grid-angular";
 
 
 @NgModule({
@@ -35,10 +37,11 @@ import { APP_RUTAS } from './app.routes';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     RouterModule,
     HttpClientModule,
-    FormsModule,
     ReactiveFormsModule,
+    AgGridModule.withComponents([]),
     APP_RUTAS
   ],
   providers: [],

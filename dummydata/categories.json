@@ -1,0 +1,41 @@
+{  
+   "error":false,
+   "category":[  
+      {  
+         "_id":"5b4d79d1fb6fc07d5ad27b06",
+         "name":"Classic Cars",
+         "icono":"car"
+      },
+      {  
+         "_id":"5b4d79fffb6fc07d5ad27b0e",
+         "name":"Motorcycles",
+         "icono":"bicycle"
+      },
+      {  
+         "_id":"5b4d7a0ffb6fc07d5ad27b1c",
+         "name":"Planes",
+         "icono":"plane"
+      },
+      {  
+         "_id":"5b4d7a1dfb6fc07d5ad27b21",
+         "name":"Ships",
+         "icono":"boat"
+      },
+      {  
+         "_id":"5b4d7a41fb6fc07d5ad27b29",
+         "name":"Trains",
+         "icono":"train"
+      },
+      {  
+         "_id":"5b4d7a28fb6fc07d5ad27b25",
+         "name":"Trucks and Buses",
+         "icono":"bus"
+      },
+      {  
+         "_id":"5b4d7a33fb6fc07d5ad27b26",
+         "name":"Vintage Cars",
+         "icono":"pricetags"
+      }
+   ],
+   "categoryCount":7
+}

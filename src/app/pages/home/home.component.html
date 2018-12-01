@@ -1,4 +1,27 @@
+
 <p>
-  home works!
+    <i class="far fa-list-alt"></i> &nbsp; Product list
 </p>
-<i class="fas fa-wrench">Under construction</i>
+<ag-grid-angular
+    #agGrid
+    style="width: 800px; height: 400px;"
+    id="myGrid"
+    [rowData]="rowData"
+    class="ag-theme-balham"
+    [columnDefs]="columnDefs"
+    [autoGroupColumnDef]="autoGroupColumnDef"
+    [enableSorting]="true"
+    [enableFilter]="true"
+    [suppressRowClickSelection]="true"
+    [groupSelectsChildren]="true"
+    [debug]="true"
+    [rowSelection]="rowSelection"
+    [enableColResize]="true"
+    [rowGroupPanelShow]="rowGroupPanelShow"
+    [pivotPanelShow]="pivotPanelShow"
+    [enableRangeSelection]="true"
+    [pagination]="true"
+    [defaultColDef]="defaultColDef"
+    (gridReady)="onGridReady($event)"
+    >
+  </ag-grid-angular>
