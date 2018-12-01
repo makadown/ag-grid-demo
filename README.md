@@ -1,6 +1,6 @@
 # AgGridDemo
 
-Demo para ag-grid, 
+Demo para ag-grid, guias https://www.ag-grid.com/angular-getting-started/  y  https://www.ag-grid.com/javascript-grid-pagination/#example-client-paging
 
 
 ## Instalaciones (Ejercicio)
@@ -15,7 +15,7 @@ ng update @angular/cli @angular/core
 ```
 Instalando Bootstrap:
 ```
-npm install bootstrap jquery popper.js --save
+npm install bootstrap font-awesome jquery popper.js --save
 ```
 el archivo angular.json debería tener las siguientes ediciones:
 ```
@@ -32,6 +32,13 @@ el archivo angular.json debería tener las siguientes ediciones:
 Instalar 
 ```
 npm install --save ag-grid-community ag-grid-angular
+```
+Agregar a styles.css
+```
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css";
 ```
 Es probable que se ocupe hacer esto:
 ```
