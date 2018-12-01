@@ -1,27 +1,23 @@
-
 <p>
-    <i class="far fa-list-alt"></i> &nbsp; Product list
+  <i class="far fa-list-alt"></i> &nbsp; Product list
 </p>
-<ag-grid-angular
-    #agGrid
-    style="width: 800px; height: 400px;"
-    id="myGrid"
-    [rowData]="rowData"
+<div class="test-header">
+  Click on a product to see its details. 
+  <span id="selectedRows"></span>
+  &nbsp;&nbsp;&nbsp;&nbsp; Page Size:
+  <select (change)="onPageSizeChanged()" id="page-size">
+      <option value="10" selected="">10</option>
+      <option value="15">15</option>
+      <option value="20">20</option>
+      <option value="30">30</option>
+  </select>
+</div>
+<div class="centrar-grid">
+  <ag-grid-angular #agGrid style="width: 50%; height: 400px;" id="myGrid" [rowData]="rowData" 
     class="ag-theme-balham"
-    [columnDefs]="columnDefs"
-    [autoGroupColumnDef]="autoGroupColumnDef"
-    [enableSorting]="true"
-    [enableFilter]="true"
-    [suppressRowClickSelection]="true"
-    [groupSelectsChildren]="true"
-    [debug]="true"
-    [rowSelection]="rowSelection"
-    [enableColResize]="true"
-    [rowGroupPanelShow]="rowGroupPanelShow"
-    [pivotPanelShow]="pivotPanelShow"
-    [enableRangeSelection]="true"
-    [pagination]="true"
-    [defaultColDef]="defaultColDef"
-    (gridReady)="onGridReady($event)"
-    >
+    [enableSorting]="true" [enableFilter]="true" [rowSelection]="rowSelection" 
+    [pagination]="true" [rowData]="rowData"
+    [columnDefs]="columnDefs" (selectionChanged)="onSelectionChanged($event)"
+    (gridReady)="onGridReady($event)">
   </ag-grid-angular>
+</div>

@@ -1,20 +1,48 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ProductService } from 'src/app/services/product.service';
 // import 'ag-grid-enterprise';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styles: []
+  styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   private gridApi;
   private gridColumnApi;
   public rowData: any[];
+  private subscription: Subscription;
 
-  public columnDefs;
-  public autoGroupColumnDef;
+  public columnDefs = [
+    {
+      headerName: '_id',
+      field: '_id',
+      hide: true,
+      width: 1
+    },
+    {
+      headerName: 'Name',
+      field: 'name',
+      width: 250,
+      filterParams: { newRowsAction: 'keep' }
+    },
+    {
+      headerName: 'Category',
+      field: 'cetegory_id.cetegory',
+      width: 90,
+      filterParams: { newRowsAction: 'keep' }
+    },
+    {
+      headerName: 'Price',
+      field: 'price',
+      width: 90,
+      filterParams: { newRowsAction: 'keep' }
+    }
+  ];
+ // public autoGroupColumnDef;
   public rowSelection;
   public rowGroupPanelShow;
   public pivotPanelShow;
@@ -24,111 +52,42 @@ export class HomeComponent implements OnInit {
     // Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     // Add 'implements OnInit' to the class.
   }
+  ngOnDestroy(): void {
 
-  constructor(private http: HttpClient) {
-    this.columnDefs = [
-      {
-        headerName: 'Athlete',
-        field: 'athlete',
-        width: 150,
-        filterParams: { newRowsAction: 'keep' },
-        checkboxSelection: function(params) {
-          return params.columnApi.getRowGroupColumns().length === 0;
-        },
-        headerCheckboxSelection: function(params) {
-          return params.columnApi.getRowGroupColumns().length === 0;
-        }
-      },
-      {
-        headerName: 'Age',
-        field: 'age',
-        width: 90,
-        filterParams: { newRowsAction: 'keep' }
-      },
-      {
-        headerName: 'Country',
-        field: 'country',
-        width: 120,
-        filterParams: { newRowsAction: 'keep' }
-      },
-      {
-        headerName: 'Year',
-        field: 'year',
-        width: 90,
-        filterParams: { newRowsAction: 'keep' }
-      },
-      {
-        headerName: 'Date',
-        field: 'date',
-        width: 110,
-        filterParams: { newRowsAction: 'keep' }
-      },
-      {
-        headerName: 'Sport',
-        field: 'sport',
-        width: 110,
-        filterParams: { newRowsAction: 'keep' }
-      },
-      {
-        headerName: 'Gold',
-        field: 'gold',
-        width: 100,
-        filterParams: { newRowsAction: 'keep' }
-      },
-      {
-        headerName: 'Silver',
-        field: 'silver',
-        width: 100,
-        filterParams: { newRowsAction: 'keep' }
-      },
-      {
-        headerName: 'Bronze',
-        field: 'bronze',
-        width: 100,
-        filterParams: { newRowsAction: 'keep' }
-      },
-      {
-        headerName: 'Total',
-        field: 'total',
-        width: 100,
-        filterParams: { newRowsAction: 'keep' }
-      }
-    ];
-    this.autoGroupColumnDef = {
-      headerName: 'Group',
-      width: 200,
-      field: 'athlete',
-      valueGetter: function(params) {
-        if (params.node.group) {
-          return params.node.key;
-        } else {
-          return params.data[params.colDef.field];
-        }
-      },
-      headerCheckboxSelection: true,
-      cellRenderer: 'agGroupCellRenderer',
-      cellRendererParams: { checkbox: true }
-    };
-    this.rowSelection = 'multiple';
-    this.rowGroupPanelShow = 'always';
-    this.pivotPanelShow = 'always';
-    this.defaultColDef = {
-      editable: true,
-      enableValue: true
-    };
+  }
+
+  constructor(private http: HttpClient,
+              private _productService: ProductService) {
+    this.rowSelection = 'single';
+  }
+
+  onSelectionChanged() {
+    const selectedRows = this.gridApi.getSelectedRows();
+    console.log(selectedRows);
+    const selectedRowsString = JSON.stringify(selectedRows[0]);
+    document.querySelector('#selectedRows').innerHTML = selectedRowsString;
+  }
+
+  onPageSizeChanged(newPageSize) {
+    const value = (<HTMLSelectElement>document.getElementById('page-size')).value;
+    this.gridApi.paginationSetPageSize(Number(value));
   }
 
   onGridReady(params) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
 
+    this.subscription = this._productService.getProducts().subscribe(data => {
+            this.rowData = data;
+        } );
+    /*
     this.http
       .get(
         'https://raw.githubusercontent.com/ag-grid/ag-grid/master/packages/ag-grid-docs/src/olympicWinnersSmall.json'
       )
       .subscribe(data => {
         this.rowData = data;
-      });
+      });*/
   }
 
 }
