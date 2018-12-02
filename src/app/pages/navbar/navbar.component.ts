@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,8 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
   // faShoppingBag = faShoppingBag;
 
-  constructor( private http: HttpClient, private router: Router) {
+  constructor( private http: HttpClient, private router: Router,
+              public _cartService: CartService) {
 
   }
 

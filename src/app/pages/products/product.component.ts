@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-products',
@@ -13,7 +14,8 @@ export class ProductComponent implements OnInit {
    product: any = { 'producto': '' };
 
   constructor(public activatedRoute: ActivatedRoute,
-              private _productService: ProductService) {
+              private _productService: ProductService,
+              public _cartService: CartService) {
 
     activatedRoute.params.subscribe(params => {
       const id = params['id'];
@@ -31,7 +33,7 @@ export class ProductComponent implements OnInit {
   cargarProducto(id: any) {
     this._productService.getProduct(id).subscribe( (product: any) => {
         // console.log('Loading product');
-        // console.log(product);
+         // console.log(product);
           this.product = product;
     } );
   }

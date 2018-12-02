@@ -4,6 +4,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { Router } from '@angular/router';
 // import 'ag-grid-enterprise';
 import { Subscription } from 'rxjs';
+import { CurrencyRenderer } from '../../currency-renderer';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   private gridColumnApi;
   public rowData: any[];
   private subscription: Subscription;
+  private frameworkComponents;
 
   public columnDefs = [
     {
@@ -39,7 +41,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     {
       headerName: 'Price',
       field: 'price',
-      width: 90,
+      width: 90, cellRenderer: 'currencyRenderer',
       filterParams: { newRowsAction: 'keep' }
     }
   ];
@@ -61,6 +63,9 @@ export class HomeComponent implements OnInit, OnDestroy {
               private _productService: ProductService,
               private router: Router) {
     this.rowSelection = 'single';
+    this.frameworkComponents = {
+      currencyRenderer: CurrencyRenderer
+    };
   }
 
   onSelectionChanged() {

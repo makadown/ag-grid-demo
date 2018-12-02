@@ -15,10 +15,10 @@ import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { AdminordersComponent } from './pages/admin/adminorders/adminorders.component';
 import { AdminproductsComponent } from './pages/admin/adminproducts/adminproducts.component';
-
 import { APP_RUTAS } from './app.routes';
 // ag-grid
 import { AgGridModule } from 'ag-grid-angular';
+import { CurrencyRenderer } from './currency-renderer';
 
 
 @NgModule({
@@ -33,7 +33,8 @@ import { AgGridModule } from 'ag-grid-angular';
     RegisterComponent,
     NavbarComponent,
     AdminordersComponent,
-    AdminproductsComponent
+    AdminproductsComponent,
+    CurrencyRenderer
   ],
   imports: [
     BrowserModule,
@@ -41,7 +42,7 @@ import { AgGridModule } from 'ag-grid-angular';
     RouterModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AgGridModule.withComponents([]),
+    AgGridModule.withComponents([CurrencyRenderer]),
     APP_RUTAS
   ],
   providers: [],

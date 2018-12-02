@@ -17,6 +17,7 @@
         class="ag-theme-balham"
         [enableSorting]="true" [enableFilter]="true" [rowSelection]="rowSelection" 
         [pagination]="true" [rowData]="rowData"
+        [frameworkComponents]="frameworkComponents"
         [columnDefs]="columnDefs" (selectionChanged)="onSelectionChanged($event)"
         (gridReady)="onGridReady($event)">
     </ag-grid-angular>

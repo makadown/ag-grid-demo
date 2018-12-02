@@ -1,4 +1,54 @@
-<p>
-  cart works!
-</p>
-<i class="fas fa-wrench">Under construction</i>
+<div *ngIf="!(_cartService.items.length>0)">
+  <i class="fas fa-shopping-cart"></i> &nbsp; <h3>There are no items in the cart.</h3>
+</div>
+
+<div *ngIf="_cartService.items.length>0" class="container text-center">
+  <div class="row">
+    <div class="col-3">
+      <!--176 * 180 -->
+      <div class="cart-logo"></div>
+      <h1>Your cart</h1>
+      <p>
+        Press the "checkout" button to continue.
+      </p>
+      <hr />
+      <button class="btn btn-outline-dark" (click)="_cartService.chekout()"> 
+        <i class="fas fa-money-bill"></i> 
+        Checkout
+      </button>
+    </div>
+
+    <div class="col-9">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of _cartService.items; let i = index;">
+            <th scope="row">{{i+1}}</th>
+            <td>{{item.producto}}</td>
+            <td>{{item.precio_compra | currency:'USD'}}</td>
+            <td><button class="btn btn-danger btn-sm" (click)="_cartService.removeItem(item)" alt="Remove">
+                <i class="far fa-trash-alt"></i>
+              </button></td>
+          </tr>
+        </tbody>
+        <tfoot class="thead-dark">
+          <tr>
+            <th colspan="2" class="text-right">Total: </th>
+            <th>{{_cartService.total_cart| currency:'USD'}}</th>
+            <th></th>
+          </tr>
+        </tfoot>
+      </table>
+
+
+    </div>
+  </div>
+
+</div>

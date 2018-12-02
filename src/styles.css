@@ -4,6 +4,14 @@
 @import "~ag-grid-community/dist/styles/ag-grid.css";
 @import "~ag-grid-community/dist/styles/ag-theme-balham.css";
 
+.cart-logo {  
+  width: 75px;
+  height: 55px;
+  background: url(assets/img/shopping-cart-solid.svg);
+  margin: auto;
+  background-repeat: no-repeat;
+}
+
 .animated {
     -webkit-animation-duration: 1s;
     animation-duration: 1s;

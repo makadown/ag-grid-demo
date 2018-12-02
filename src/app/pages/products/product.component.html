@@ -1,5 +1,21 @@
-<p>
-  products works!
-  {{product.producto}}
-</p>
-<i class="fas fa-wrench">Under construction</i>
+<div padding>
+        <h5>{{product.producto}}</h5>
+        <p>
+            <strong>Precio:</strong> {{product.precio_compra | currency:'USD'}}
+        </p>
+        <p>
+            Description: {{product.descripcion}}
+            <br/>
+            <strong>
+            Provider: {{ product.proveedor }}
+          </strong>
+        </p>
+        <button  *ngIf="!(_cartService.isProductInCart(product))" class="btn btn-outline-dark"
+                  (click)="_cartService.addToCart(product)">
+          <i class="fas fa-cart-plus"></i> Add to cart.
+        </button>
+        <div *ngIf="_cartService.isProductInCart(product)">
+          <i class="fas fa-cart-plus"></i> <i> This product is already added to cart.</i>
+        </div>
+
+    </div>

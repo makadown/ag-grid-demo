@@ -16,9 +16,17 @@
           </li>
           <li class="nav-item">
               <a class="nav-link" [routerLink]="['/cart']" routerLinkActive="router-link-active">
-                <i class="fas fa-shopping-cart">&nbsp;</i>Cart
+                <i class="fas fa-shopping-cart">&nbsp; </i>
+                <i *ngIf="_cartService.items.length>0">({{_cartService.items.length}})</i>
+                Cart
               </a>
           </li>
+          <!--Check if login user is Admin-->
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/admin/products']" routerLinkActive="router-link-active">
+              <i class="fas fa-unlock-alt">&nbsp; </i>Admin
+            </a>
+         </li>
       </ul>
 <!--
       <button *ngIf="_usuarioService.estaLogueado()" class="btn btn-outline-success my-2 my-sm-0" (click)="logout()">Logout</button>
