@@ -12,6 +12,14 @@
   background-repeat: no-repeat;
 }
 
+.success-logo {  
+    width: 75px;
+    height: 55px;
+    background: url(assets/img/check-circle-regular.svg);
+    margin: auto;
+    background-repeat: no-repeat;
+  }
+
 .animated {
     -webkit-animation-duration: 1s;
     animation-duration: 1s;
