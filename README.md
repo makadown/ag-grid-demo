@@ -53,4 +53,6 @@ Para asegurar que estén presentes todas las dependencias:
 npm install
 ```
 
+#### StackBlitz samples
 
+https://stackblitz.com/edit/test-dates
