@@ -29,7 +29,7 @@ export class DatesComponent implements OnInit {
   }
 
   public buildDateTables() {
-    console.log ('Pivot now is ' + this._pivotDate) ;
+    // console.log ('Pivot now is ' + this._pivotDate) ;
     this._weekNumber = this.getWeekNumber(this._pivotDate);
     // 26 blocks... 52 weeks most of the time.
     this._pivotDateInFirstBlock = this._weekNumber % 2 > 0;
