@@ -19,6 +19,7 @@ import { APP_RUTAS } from './app.routes';
 // ag-grid
 import { AgGridModule } from 'ag-grid-angular';
 import { CurrencyRenderer } from './currency-renderer';
+import { DatesComponent } from './pages/dates/dates.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { CurrencyRenderer } from './currency-renderer';
     NavbarComponent,
     AdminordersComponent,
     AdminproductsComponent,
-    CurrencyRenderer
+    CurrencyRenderer,
+    DatesComponent
   ],
   imports: [
     BrowserModule,

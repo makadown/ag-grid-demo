@@ -7,10 +7,12 @@ import { SuccessComponent } from './pages/success/success.component';
 import { AdminordersComponent } from './pages/admin/adminorders/adminorders.component';
 import { AdminproductsComponent } from './pages/admin/adminproducts/adminproducts.component';
 import { ProductComponent } from './pages/products/product.component';
+import { DatesComponent } from './pages/dates/dates.component';
 
 const APP_ROUTES: Routes = [
     { path: '', component: HomeComponent },
     { path: 'home', component: HomeComponent },
+    { path: 'dates', component: DatesComponent },
     { path: 'product/:id', component: ProductComponent },
     { path: 'cart', component: CartComponent },
     { path: 'checkout', component: CheckoutComponent },
